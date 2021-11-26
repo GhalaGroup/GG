@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from datetime import datetime, timedelta
@@ -27,7 +28,12 @@ class inventory_wizard(models.TransientModel):
     excel_file = fields.Binary('Excel File')
 
 
-
+    def print_pdf(self):
+        data = {}
+        data['form'] = self.read()[0]
+        return self.env.ref('dev_inventory_ageing_report.'
+                            'inventory_age_pdf_report').report_action(
+            self, data=None)
 
     
     def get_products(self):
@@ -211,7 +217,6 @@ class inventory_wizard(models.TransientModel):
     
     def print_excel(self):
         product_ids = self.get_products()
-        print ("ca=========",product_ids)
         #====================================
         # Style of Excel Sheet 
         excel_style = self.get_style()
@@ -223,7 +228,7 @@ class inventory_wizard(models.TransientModel):
         text_left_bold = excel_style[5]
         text_right_bold = excel_style[6]
         text_center = excel_style[7]
-       
+        # ====================================
         
         
         
@@ -265,4 +270,4 @@ class inventory_wizard(models.TransientModel):
             }
     
         
-
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

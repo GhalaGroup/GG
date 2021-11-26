@@ -10,7 +10,7 @@ xlsxwriter
 
 sudo easy_install xlsxwriter 
 
-Next Go to seeting / apps and search "Inventory Aging Report PDF/Excel" and Install 
+Next Go to seeting / apps and search "Stock Inventory Aging Report PDF/Excel" and Install 
 
 And, you are done with installation. Congratulations!
 
